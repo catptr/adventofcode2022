@@ -50,5 +50,6 @@ let main args =
                                 | "3" -> RucksackReorganization.solve i p
                                 | "4" -> CampCleanup.solve i p
                                 | "5" -> SupplyStacks.solve i p
+                                | "6" -> TuningTrouble.solve i p
                                 | _ -> failwith <| sprintf "No puzzles solved for day '%s'" d
         0
