@@ -63,11 +63,6 @@ let calculateScore (r: Round) =
         | _ -> 3
     moveScore + outcomeScore
 
-let lineToRound f (l: string) =
-    match l.Split(' ') with
-    | [|a; b|] -> f a b
-    | _ -> failwith <| sprintf "Couldn't parse line '%s'" l
-
 let solve (path: string) (puzzle: Puzzle) =
     let solution parse ls =
         ls
