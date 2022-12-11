@@ -14,3 +14,5 @@ let splitPair (c: char) (s: string) =
     match s.Split(c) with
     | [|a; b|] -> a,b
     | _ -> failwith <| sprintf "Couldn't split line '%s'" s
+
+let mapBoth f (a, b) = f a, f b

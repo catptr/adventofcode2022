@@ -4,8 +4,6 @@ open System.IO
 open Common
 
 let toSets (l: string) =
-    let mapBoth f (a, b) = f a, f b
-    
     let toSet (s: string) =
         let a,b = splitPair '-' s |> mapBoth int
         seq { a .. b }
