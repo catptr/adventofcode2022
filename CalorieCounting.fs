@@ -3,16 +3,14 @@ module CalorieCounting
 open System.IO
 open Common
 
-let solve (path: string) (puzzle: Puzzle) =
-    let caloriesPerElf (i: string) =
-        i.Split("\n\n")
-        |> Array.map (fun c -> c.Split("\n") |> Array.map int |> Array.sum)
-        
+let solve (path: string) (puzzle: Puzzle) =        
     printfn "Day 1:"
 
-    let input = File.ReadAllText(path)
+    let caloriesPerElf =
+        File.ReadAllText(path).Split("\n\n")
+        |> Array.map (fun c -> c.Split("\n") |> Array.map int |> Array.sum)
     
     if isSet puzzle Puzzle.First then
-        printfn "Solution to first puzzle: %d" <| Array.max (caloriesPerElf input)
+        printfn "Solution to first puzzle: %d" <| Array.max caloriesPerElf
     if isSet puzzle Puzzle.Second then
-        printfn "Solution to second puzzle: %d" (caloriesPerElf input |> Array.sortDescending |> Array.take 3 |> Array.sum)
+        printfn "Solution to second puzzle: %d" (caloriesPerElf |> Array.sortDescending |> Array.take 3 |> Array.sum)
