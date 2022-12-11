@@ -29,7 +29,7 @@ let solve (path: string) (puzzle: Puzzle) =
         rs
         |> Array.map (fun r -> Set.union r.A r.B)
         |> Array.chunkBySize 3
-        |> Array.map (fun c -> Array.fold Set.intersect (Array.head c) (Array.tail c) |> Seq.exactlyOne)
+        |> Array.map (Array.reduce Set.intersect >> Seq.exactlyOne)
 
     let solution f rs =
         f rs
