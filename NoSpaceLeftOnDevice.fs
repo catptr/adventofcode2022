@@ -16,19 +16,19 @@ type Entry =
 
 let parse (l: string) =
     let command (ps: string[]) =
-        let c = ps.[0]
+        let c = ps[0]
         match c with
-        | "cd" -> Cd ps.[1]
+        | "cd" -> Cd ps[1]
         | "ls" -> Ls
         | _ -> failwith <| sprintf "expected cd or ls, got '%s'" c
     
     let file (ps: string[]) =
-        Input.File (int ps.[0], ps.[1])
+        Input.File (int ps[0], ps[1])
     
     let parts = l.Split(' ')
-    match parts.[0] with
+    match parts[0] with
     | "$" -> Array.tail parts |> command
-    | "dir" -> parts.[1] |> Dir
+    | "dir" -> parts[1] |> Dir
     | d when Char.IsDigit(d, 0) -> parts |> file 
     | _ -> failwith <| sprintf "unexpected terminal output: '%s'" l
 
@@ -41,18 +41,12 @@ let tree ls =
     let addToDirectory dir entry =
         mapDir (fun (p,cs) -> p,entry :: cs) dir
 
-    let mapTop f stack =
-        match stack with
-        | x :: xs -> f x :: xs
-        | [] -> []
+    let mapTop = mapHead
     
     let reduceTop2 f stack =
         match stack with
         | x :: y :: rest -> f x y :: rest
         | _ -> stack
-
-    let flip f a b =
-        f b a
     
     let inputToEntry stack line =
         match line with

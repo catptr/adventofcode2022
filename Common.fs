@@ -16,3 +16,11 @@ let splitPair (c: char) (s: string) =
     | _ -> failwith <| sprintf "Couldn't split line '%s'" s
 
 let mapBoth f (a, b) = f a, f b
+
+let mapHead f stack =
+    match stack with
+    | x :: xs -> f x :: xs
+    | [] -> []
+
+let flip f a b =
+    f b a

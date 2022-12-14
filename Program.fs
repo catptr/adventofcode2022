@@ -19,7 +19,7 @@ let main args =
         printfn "%s" usage
         1
     else
-        if args.[0] = "--help" then
+        if args[0] = "--help" then
             printfn "%s" usage
         else
             let getPuzzle k v =
@@ -31,13 +31,13 @@ let main args =
                 else
                     Puzzle.Both
             
-            let puzzle = getPuzzle args.[0] args.[1]
+            let puzzle = getPuzzle args[0] args[1]
 
             let required =
                 if puzzle = Puzzle.Both then
-                    Some (args.[0],args.[1])
+                    Some (args[0],args[1])
                 elif args.Length = 4 then
-                    Some (args.[2],args.[3])
+                    Some (args[2],args[3])
                 else
                     None
             
