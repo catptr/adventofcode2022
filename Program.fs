@@ -52,5 +52,6 @@ let main args =
                                 | "5" -> SupplyStacks.solve i p
                                 | "6" -> TuningTrouble.solve i p
                                 | "7" -> NoSpaceLeftOnDevice.solve i p
+                                | "8" -> TreetopTreeHouse.solve i p
                                 | _ -> failwith <| sprintf "No puzzles solved for day '%s'" d
         0

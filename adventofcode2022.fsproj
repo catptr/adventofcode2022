@@ -5,6 +5,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Common.fs" />
+    <Compile Include="TreetopTreeHouse.fs" />
     <Compile Include="NoSpaceLeftOnDevice.fs" />
     <Compile Include="TuningTrouble.fs" />
     <Compile Include="SupplyStacks.fs" />
